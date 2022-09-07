@@ -1,9 +1,7 @@
-import React from "react";
 import {
-  BrowserRouter,
+  BrowserRouter as HashRouter,
   Routes,
   Route,
-  HashRouter,
 } from 'react-router-dom';
 
 import './styles/_theme1.scss';
@@ -14,22 +12,20 @@ import HomePage from './components/HomePage'
 import POSPage from './components/POSPage'
 function App() {
   return (
-    <BrowserRouter>
-      <HashRouter basename="/">
-        <Routes>
-          <Route path='/' element={<HomePage />} />
-          <Route path='/pos' element={<POSPage />} />
-          <Route
-            path="*"
-            element={
-              <main style={{ padding: "1rem" }}>
-                <p>Página no encontrada</p>
-              </main>
-            }
-          />
-        </Routes>
-      </HashRouter>
-    </BrowserRouter>
+    <HashRouter>
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+        <Route path='/pos' element={<POSPage />} />
+        <Route
+          path="*"
+          element={
+            <main style={{ padding: "1rem" }}>
+              <p>Página no encontrada</p>
+            </main>
+          }
+        />
+      </Routes>
+    </HashRouter>
   );
 }
 
