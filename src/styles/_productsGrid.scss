@@ -1,0 +1,53 @@
+@import "./_theme1.scss";
+
+.orderGrid,
+.productsGrid {
+    background: $backgroud_product_grid;
+    border-radius: 10px;
+    overflow: auto;
+}
+
+.orderGrid {
+    height: 60vh;
+}
+
+.productsGrid {
+    height: 80vh;
+
+}
+
+.item_box {
+    font-weight: bold;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+img {
+    pointer-events: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.item_box:hover {
+    background: $backgroud_hover_item;
+}
+
+.item_box:active {
+    background: $backgroud_active_item;
+}
+
+td {
+    text-align: center;
+}
+
+.table-print {
+    max-width: 400px;
+    margin: auto;
+}

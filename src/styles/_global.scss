@@ -1,0 +1,12 @@
+@import "./_theme1.scss";
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+body {
+    background: $backgroud_body;
+    color: $textColorGeneral;
+}
+
+h2,
+td {
+    color: $textColorGeneral;
+}

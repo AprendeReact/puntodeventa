@@ -1,0 +1,21 @@
+@import "./_theme1.scss";
+
+.cart {
+    background: $backgroud_cart;
+    height: 80vh;
+    border-radius: 30px;
+    overflow: auto;
+}
+
+.remove-button {
+    background: $colorRemoveButton;
+    border: none;
+}
+
+.print-button {
+    background: $secundaryColor;
+}
+
+.print-button:hover {
+    background: $hoverColor1;
+}

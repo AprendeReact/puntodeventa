@@ -1,0 +1,14 @@
+@import "./_theme1.scss";
+
+.navbar {
+    background: $backgroud_navbarmenu;
+}
+
+.navbar-nav .show>.nav-link,
+.navbar-nav .nav-link.active {
+    color: $colorTextMenu;
+}
+
+.navbar-brand {
+    color: $colorTextMenu;
+}
