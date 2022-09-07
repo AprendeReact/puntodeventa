@@ -1,8 +1,5 @@
-import {
-  BrowserRouter as HashRouter,
-  Routes,
-  Route,
-} from 'react-router-dom';
+import { HashRouter, Routes, Route } from "react-router-dom";
+
 
 import './styles/_theme1.scss';
 import './styles/_global.scss';
