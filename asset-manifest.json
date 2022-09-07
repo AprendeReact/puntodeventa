@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/puntodeventa/static/css/main.692a55cf.css",
+    "main.js": "/puntodeventa/static/js/main.5a08d878.js",
+    "index.html": "/puntodeventa/index.html",
+    "main.692a55cf.css.map": "/puntodeventa/static/css/main.692a55cf.css.map",
+    "main.5a08d878.js.map": "/puntodeventa/static/js/main.5a08d878.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.692a55cf.css",
+    "static/js/main.5a08d878.js"
+  ]
+}
