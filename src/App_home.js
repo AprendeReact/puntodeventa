@@ -1,6 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-
 import './styles/_theme1.scss';
 import './styles/_global.scss';
 import './styles/_navbar_custom.scss';
@@ -13,8 +11,7 @@ import Orders from './components/Orders'
 import {Footer} from './components/Footer'
 function App() {
   return (
-
-
+ 
     <BrowserRouter>
       <NavbarMenu />
       <Routes>
