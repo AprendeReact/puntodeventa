@@ -104,7 +104,7 @@ function POSPage() {
           <div className='col-lg-8 productsGrid'>
             <ToastContainer />
             {
-              <GetProductsGrid action={addProductToCart} />
+              <GetProductsGrid action={addProductToCart} show_price={true}/>
             }
           </div>
 

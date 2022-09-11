@@ -6,6 +6,7 @@ const GetProductsGrid = (props) => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const action = props.action;
+  const show_price = props.show_price;
 
   // Get products from API REST
   const fetchProducts = async () => {
@@ -28,7 +29,7 @@ const GetProductsGrid = (props) => {
   return (
     <>
       {isLoading ? 'Cargando...' : <div className='row'>
-        <ItemProduct products={products} action={action} />
+        <ItemProduct products={products} action={action} show_price={show_price}/>
       </div>
       }
     </>

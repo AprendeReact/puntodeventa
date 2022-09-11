@@ -2,7 +2,7 @@ import React from 'react'
 
 export const ItemProduct = (props) => {
 
-const action = props.action;
+  const action = props.action;
   return (
     <>
       {props.products.map((product, key) =>
@@ -11,7 +11,7 @@ const action = props.action;
             <div className='border item_box px-1 my-3 text-center' onClick={() => action(product)}>
               <p className='m-3'>{product.name}</p>
               <img src={product.image} className='img-fluid' alt="{product.name}" />
-              <p className='m-3'>${product.price}</p>
+              {props.show_price ? <p className='m-3'>${product.price}</p> : ""}
             </div>
           </div>
 
