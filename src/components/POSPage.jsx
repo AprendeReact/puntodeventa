@@ -1,38 +1,21 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { NavbarMenu } from './NavbarMenu'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClose, faTrash } from '@fortawesome/free-solid-svg-icons'
-import axios from 'axios'
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ComponentToPrint } from './print/ComponentToPrint'
 import { useReactToPrint } from 'react-to-print';
 import '../styles/_productsGrid.scss';
+import GetProductsGrid from './GetProductsGrid';
+import ToastMessage from './layouts/ToastMessage';
 
 function POSPage() {
   //define useState
-  const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
   const [cart, setCart] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
   const [totalQuatity, setTotalQuatity] = useState(0);
   const divCartRef = useRef(null);
-
-  // toast notifications config
-  const toastOption = {
-    autoClose: 1000,
-    pauseOnOver: true,
-    position: "bottom-right",
-    hideProgressBar: true
-  }
-
-  // Get products from API REST
-  const fetchProducts = async () => {
-    setIsLoading(true);
-    const result = await axios.get(process.env.REACT_APP_API + 'products');
-    setProducts(result.data);
-    setIsLoading(false);
-  }
+ 
 
   //Function add product to cart 
   const addProductToCart = async (product) => {
@@ -56,11 +39,12 @@ function POSPage() {
         } else {
           newCart.push(cartItem);
         }
- 
+
       });
 
       setCart(newCart);
-      toast.success(`Se agregó ${newItem.name}`, toastOption);
+      ToastMessage("Se agregó " + newItem.name, "success");
+
     } else {
       let addingProduct = {
         ...product,
@@ -68,7 +52,7 @@ function POSPage() {
         'totalAmount': product.price,
       }
       setCart([...cart, addingProduct]);
-      toast.success(`Se agregó ${product.name}`, toastOption);
+      ToastMessage("Se agregó " + product.name, "success");
 
     }
   }
@@ -83,19 +67,9 @@ function POSPage() {
   }
   const clearCart = () => {
     setCart([]);
-    toast.info("Se ha limpiado la orden.", toastOption);
+     ToastMessage("Se ha limpiado la orden.", "info");
 
   }
-
-  //Invoque function get products from API REST 
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
-  // Update when change products array
-  useEffect(() => {
-    console.log(products);
-  }, [products]);
 
   // Update when change cart array
   useEffect(() => {
@@ -125,27 +99,13 @@ function POSPage() {
   }
   return (
     <div>
-      <NavbarMenu />
       <div className='container'>
         <div className='row mt-3'>
           <div className='col-lg-8 productsGrid'>
             <ToastContainer />
-            {isLoading ? 'Cargando...' : <div className='row'>
-              {products.map((product, key) =>
-                product.name ?
-                  <div key={key} className='col-lg-3 col-4'>
-                    <div className='border item_box px-1 my-3 text-center' onClick={() => addProductToCart(product)}>
-                      <p className='m-3'>{product.name}</p>
-                      <img src={product.image} className='img-fluid' alt="{product.name}" />
-                      <p className='m-3'>${product.price}</p>
-                    </div>
-                  </div>
-
-                  : ""
-              )}
-            </div>
+            {
+              <GetProductsGrid action={addProductToCart} />
             }
-
           </div>
 
           <div className='col-lg-4 orderGrid' >
