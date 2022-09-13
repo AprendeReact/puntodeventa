@@ -8,28 +8,34 @@ import HomePage from './components/HomePage'
 import POSPage from './components/POSPage'
 import Inventory from './components/Inventory'
 import Orders from './components/Orders'
-import {Footer} from './components/Footer'
+import { Footer } from './components/Footer'
+import { Provider } from 'react-redux'
+import generateStore from './redux/store_index'
 function App() {
+
+  const store = generateStore();
   return (
- 
-    <BrowserRouter>
-      <NavbarMenu />
-      <Routes>
-        <Route path='/' element={<HomePage />} />
-        <Route path='/pos' element={<POSPage />} />
-        <Route path='/inventario' element={<Inventory />} />
-        <Route path='/Orders' element={<Orders />} />
-        <Route
-          path="*"
-          element={
-            <main style={{ padding: "1rem" }}>
-              <p>Página no encontrada</p>
-            </main>
-          }
-        />
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+
+    <Provider store={store}>
+      <BrowserRouter>
+        <NavbarMenu />
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route path='/pos' element={<POSPage />} />
+          <Route path='/inventario' element={<Inventory />} />
+          <Route path='/Orders' element={<Orders />} />
+          <Route
+            path="*"
+            element={
+              <main style={{ padding: "1rem" }}>
+                <p>Página no encontrada</p>
+              </main>
+            }
+          />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </Provider>
 
   );
 }

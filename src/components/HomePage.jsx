@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-
+ 
 
 function HomePage() {
   return (
@@ -10,6 +10,7 @@ function HomePage() {
         <div className='row'>
           <div className='col-lg-4'>
             <NavLink to='/pos' className='btn btn-primary'>Abrir punto de venta</NavLink>
+           
           </div>
         </div>
       </div>

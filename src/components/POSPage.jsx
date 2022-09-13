@@ -126,7 +126,7 @@ function POSPage() {
                       {totalAmount !== 0 ?
                         <div>
 
-                          <button className='btn btn-danger' title="Borrar todo" onClick={clearCart}><FontAwesomeIcon icon={faClose} /></button>
+                          <button className='btn btn-danger' title="Borrar todo" onClick={() => clearCart()}><FontAwesomeIcon icon={faClose} /></button>
 
                         </div>
                         : ''
@@ -165,7 +165,7 @@ function POSPage() {
               {totalAmount !== 0 ?
                 <div className='w-100'>
                   <div className='text-center'>
-                    <button className='btn print-button mb-5' onClick={printNote}>
+                    <button className='btn print-button mb-5' onClick={() => printNote()}>
                       Imprimir oden
                     </button>
                   </div>

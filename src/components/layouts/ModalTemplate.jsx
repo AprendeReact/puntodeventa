@@ -1,31 +1,30 @@
 import React, { forwardRef, useRef, useImperativeHandle } from 'react'
 import { Modal } from 'bootstrap'
 
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import FormNewProduct from './FormNewProduct'
 
 
 const ModalTemplate = forwardRef((props, ref) => {
-
+  let data_form = null;
   const modalRef = useRef()
-
-
   const hideModal = () => {
     const modalEle = modalRef.current
     const bsModal = Modal.getInstance(modalEle)
     bsModal.hide()
   }
 
+
   useImperativeHandle(ref, () => ({
 
-    showModal() {
+    showModal(props) {
       const modalEle = modalRef.current
       const bsModal = new Modal(modalEle, {
         backdrop: 'static',
         keyboard: false
       })
-      bsModal.show()
+      bsModal.show();
+      data_form = props;
     }
   }));
 
@@ -35,7 +34,7 @@ const ModalTemplate = forwardRef((props, ref) => {
 
     switch (type) {
       case "form_new_product":
-        return <FormNewProduct />;
+        return <FormNewProduct data_form={data_form} />;
 
       case "form_update_product":
         return <FormNewProduct />;
@@ -47,7 +46,6 @@ const ModalTemplate = forwardRef((props, ref) => {
   };
   return (
     <>
-      <button className='btn btn-primary' onClick={ref.current.showModal}><FontAwesomeIcon icon={faPlus} /> Nuevo producto</button>
       <div className="modal fade" ref={modalRef} tabIndex="-1" >
         <div className="modal-dialog">
           <div className="modal-content">
